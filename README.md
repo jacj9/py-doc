@@ -1,4 +1,4 @@
 # py-doc
 Here is where I keep track of my python progress.
 Go over again:
-loops, functions, recursion, example, scope, module, command line arguments
+loops, functions, recursion, example, scope, module, command line arguments, classes & objects, lambda
