@@ -1,7 +1,7 @@
 def hello_world(): # definition of a funtion
     print("Hello world!")
 
-hello_world() # call the function hello()
+hello_world() # call the function hello_world()
 
 # parameter
 def sum(num1=0, num2=0):
