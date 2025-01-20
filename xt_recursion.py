@@ -1,6 +1,17 @@
 """ Recursion exercises from Gemini. Recursion happens when a function calls itself.
 Written on: January 19, 2025"""
 
+def EvenNums(num):
+  print(num)
+  if num % 2 != 0:
+    print("Please enter an even number")
+  elif num == 2:
+    return num
+  else:
+    return EvenNums(num-2)
+
+EvenNums(9)
+
 # 1. Factorial
 # Calculate the factorial of a non-negative integer.
 # The factorial of a non-negative integer 'n', denoted by 'n!', is the product of all positive integers less than or equal to 'n'.   
@@ -46,10 +57,19 @@ def fibonacci(n):
     return n
   else:
     return fibonacci(n-1) + fibonacci(n-2)
+  
+# iteration
+def Fibonacci(idx):
+    seq = [0,1]
+    for i in range(idx):
+        seq.append(seq[-1]+seq[-2])
+    return seq[-2]
 
 # Example usage
-result = fibonacci(6)
+result = fibonacci(8)
 print(f"6th Fibonacci number: {result}")  # Output: 6th Fibonacci number: 8
+print(Fibonacci(8))
+
 
 
 #############
