@@ -37,6 +37,7 @@
 # Scenario: You are building a user registration form for a website. One of 
 # the fields in the form is an email address. Your task is to validate 
 # the user input and ensure that it is a properly formatted email address.
+######################
 
 # import re
 
@@ -61,28 +62,41 @@
 ####################
 ## Password validation practice
 # Written on: January 24, 2025
+#####################
 
 import re
 
 
-password = input("Enter a password: ")
+# password = input("Enter a password: ")
+
 
 def is_password_valid(password):
     if not len(password) >= 8:
         return False
     
-    if not re.search(r'[a-zA-Z]', password):
+    if not re.search(r'[a-z]', password): # At least one lower case letter
         return False
     
-    if not re.search(r'[_!#^&]', password):
+    if not re.search(r'[A-Z]', password): # At least one upper case letter
         return False
     
-    if not re.search(r'[0-9]', password):
+    if not re.search(r'[!@#$%^&*()_+\-=\[\]{};"\\|,.<>\/?~]', password): # At least one special character
+        return False
+    
+    if not re.search(r'\d', password): # At lease one digit
+        return False
+    
+    if re.search(r'\s', password): # No whitespace character
         return False
     
     return True
 
-if is_password_valid(password):
-    print("Valid password")
-else:
-    print("Not valid password")
+print(is_password_valid("passwo-rd_123")) # False
+print(is_password_valid("Abs123!s$"))  # True
+print(is_password_valid("123we3"))        # False
+print(is_password_valid("pA^sswo-rd_123")) # True
+
+# if is_password_valid(password):
+#     print("Valid password")
+# else:
+#     print("Not valid password")
