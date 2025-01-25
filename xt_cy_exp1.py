@@ -38,19 +38,51 @@
 # the fields in the form is an email address. Your task is to validate 
 # the user input and ensure that it is a properly formatted email address.
 
+# import re
+
+# # Test the validate_email function
+# email1 = input("Please enter an email address: ")
+
+# def validate_email(email1):
+#     # Email pattern to check for the proper format
+#     pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$'
+#     # Check if the email matches the pattern
+#     if re.match(pattern, email1):
+#             return True
+#     else:
+#             return False
+
+# if validate_email(email1):
+#     print("Valid email address.")
+# else:
+#     print("Invalid email address.")
+
+
+####################
+## Password validation practice
+# Written on: January 24, 2025
+
 import re
 
-def validate_email(email):
-    # Email pattern to check for the proper format
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    # Check if the email matches the pattern
-    if re.match(pattern, email):
-            return True
-    else:
-            return False
-# Test the validate_email function
-email1 = input("Please enter an email address: ")
-if validate_email(email1):
-    print("Valid email address.")
+
+password = input("Enter a password: ")
+
+def is_password_valid(password):
+    if not len(password) >= 8:
+        return False
+    
+    if not re.search(r'[a-zA-Z]', password):
+        return False
+    
+    if not re.search(r'[_!#^&]', password):
+        return False
+    
+    if not re.search(r'[0-9]', password):
+        return False
+    
+    return True
+
+if is_password_valid(password):
+    print("Valid password")
 else:
-    print("Invalid email address.")
+    print("Not valid password")
