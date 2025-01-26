@@ -78,15 +78,25 @@ Written on: January 19, 2025"""
 # print_character(input_string)
 
 """Draw a Tree
+from video: https://youtube.com/shorts/SGD7k-8i0Mw?si=ex3097d5O10B6AiV
 Written on January 25, 2025"""
+#           *
+#          ***
+#         *****
+#        *******
+#       *********
+#      *********** 11
+#           *
+
+# height = 6
+# 6 * 2 = 12 - 1 = width of the tree
 
 def tree(height):
     length = height * 2 - 1
-    stars = 1
-    for i in range(1, height + 1):
+    stars = 1 # starts with 1 star by default
+    for i in range(1,height+1): # 
         print(("*" * stars).center(length))
-        stars+=2
+        stars+=2 # increment 2 after printing each layer
     print("*".center(length))
 
-tree(9)
-tree(20)
+tree(6)
