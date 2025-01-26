@@ -131,3 +131,43 @@ Written on January 25, 2025
 # print(password_strength("0 234PassW0rd"))
 # print(password_strength("weakpas"))
 
+
+"""Write a Python program that defines a function and takes 
+a password string as input and returns its SHA-256 hashed 
+representation as a hexadecimal string.
+
+With this code, passwords can be securely stored and authenticated 
+by hashing them and storing only their hashed representation."""
+
+# import hashlib
+
+# def hash_password(password):
+#     # Encode the password as bytes
+#     password_bytes = password.encode('utf-8')
+
+#     # Use SHA-256 hash function to create a hash object
+#     hash_object = hashlib.sha256(password_bytes)
+
+#     # Get the hexadecimal representation of the hash
+#     password_hash = hash_object.hexdigest()
+
+#     return password_hash
+
+# password = input("Input a password: ")
+# hashed_password = hash_password(password)
+# print("Your hashed password is: ", hashed_password)
+
+
+####################
+import hashlib
+
+def hashed_password(password):
+    # Create a hash object using SHA-256
+    hash_object = hashlib.sha256(password.encode('utf-8'))
+
+    # Get the hexadecimal digest of the hash
+    hex_digest = hash_object.hexdigest()
+
+    return hex_digest
+
+print(hashed_password("hello world"))
