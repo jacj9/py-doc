@@ -137,7 +137,9 @@ a password string as input and returns its SHA-256 hashed
 representation as a hexadecimal string.
 
 With this code, passwords can be securely stored and authenticated 
-by hashing them and storing only their hashed representation."""
+by hashing them and storing only their hashed representation.
+
+Written on: January 26, 2025"""
 
 # import hashlib
 
@@ -159,6 +161,8 @@ by hashing them and storing only their hashed representation."""
 
 
 ####################
+# Hashlib basics. Similar to the previous exercise above.
+# Written on: January 26, 2025
 import hashlib
 
 def hashed_password(password):
