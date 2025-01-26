@@ -68,11 +68,25 @@ Written on: January 19, 2025"""
 # each character on a new line. Try "hello"
 # Written on: January 22, 2025
 
-input_string = str(input("Please enter a string: "))
+# input_string = str(input("Please enter a string: "))
 
-def print_character(input_string):
-    for letter in input_string:
-        print(letter)
+# def print_character(input_string):
+#     for letter in input_string:
+#         print(letter)
 
-print_character("Hello ")
-print_character(input_string)
+# print_character("Hello ")
+# print_character(input_string)
+
+"""Draw a Tree
+Written on January 25, 2025"""
+
+def tree(height):
+    length = height * 2 - 1
+    stars = 1
+    for i in range(1, height + 1):
+        print(("*" * stars).center(length))
+        stars+=2
+    print("*".center(length))
+
+tree(9)
+tree(20)
