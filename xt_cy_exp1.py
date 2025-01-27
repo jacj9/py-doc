@@ -138,7 +138,6 @@ representation as a hexadecimal string.
 
 With this code, passwords can be securely stored and authenticated 
 by hashing them and storing only their hashed representation.
-
 Written on: January 26, 2025"""
 
 # import hashlib
@@ -161,17 +160,42 @@ Written on: January 26, 2025"""
 
 
 ####################
-# Hashlib basics. Similar to the previous exercise above.
+# Hashlib exercise. Similar to the previous exercise above.
 # Written on: January 26, 2025
-import hashlib
+# import hashlib
 
-def hashed_password(password):
-    # Create a hash object using SHA-256
-    hash_object = hashlib.sha256(password.encode('utf-8'))
+# def hashed_password(password):
+#     # Create a hash object using SHA-256
+#     hash_object = hashlib.sha256(password.encode('utf-8'))
 
-    # Get the hexadecimal digest of the hash
-    hex_digest = hash_object.hexdigest()
+#     # Get the hexadecimal digest of the hash
+#     hex_digest = hash_object.hexdigest()
 
-    return hex_digest
+#     return hex_digest
 
-print(hashed_password("hello world"))
+# print(hashed_password("hello world"))
+
+##################################
+# Generate a random password with a combination of uppercase and 
+# lowercase letters, digits, and special characters.
+# Written on: January 26, 2025
+
+# import secrets
+# import string
+
+# def generate_password(length=12):
+#     alphabet = string.ascii_letters + string.digits + string.punctuation
+#     return ''.join(secrets.choice(alphabet) for i in range(length))
+
+# password = generate_password()
+# print(password)
+
+## Another attempt
+import secrets
+import string
+
+def random_password(length=12):
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(secrets.choice(alphabet) for i in range(length))
+
+print(random_password(20))
