@@ -190,12 +190,63 @@ Written on: January 26, 2025"""
 # password = generate_password()
 # print(password)
 
-## Another attempt
-import secrets
+#### Another attempt ######
+# import secrets
+# import string
+
+# def random_password(length=12):
+#     alphabet = string.ascii_letters + string.digits + string.punctuation
+#     return ''.join(secrets.choice(alphabet) for i in range(length))
+
+# print(random_password(20))
+
+
+###########################################
+# Write a Python program that defines a function and takes a password string 
+# as input and returns its SHA-256 hashed representation as a hexadecimal string.
+# Written on: January 27, 2025
+###########################################
+# import hashlib
+
+# def hash_pass(password):
+#     encode = password.encode('utf-8')
+
+#     hash_object = hashlib.sha256(encode)
+
+#     hex_digest = hash_object.hexdigest()
+
+#     return hex_digest
+
+# print("Your hashed password is ", hash_pass("Hello world"))
+# print(hash_pass("January 27, 2025"))
+# print(hash_pass("Extra practice"))
+
+
+##################################
+# Generate a random password with a combination of uppercase and 
+# lowercase letters, digits, and special characters.
+# Written on: January 27, 2025
+###################################
+
+import random
 import string
 
-def random_password(length=12):
-    alphabet = string.ascii_letters + string.digits + string.punctuation
-    return ''.join(secrets.choice(alphabet) for i in range(length))
+def generate_password(length=12):
+    # Define the characters to use in the password
+    alfabet = string.ascii_letters + string.digits + string.punctuation
 
-print(random_password(20))
+    # Use the random module to generate the password
+    password = r''.join(random.choice(alfabet) for i in range(length))
+
+    return password
+
+password_length_str = input("Input the desire length of your password: ")
+
+# Defaults to 12 characters password if there is no input
+if password_length_str:
+    password_length = int(password_length_str)
+else:
+    password_length = 12
+
+password = generate_password(password_length)
+print(f"Generated password is: {password}")
