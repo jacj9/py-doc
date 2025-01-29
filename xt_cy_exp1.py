@@ -228,25 +228,65 @@ Written on: January 26, 2025"""
 # Written on: January 27, 2025
 ###################################
 
-import random
-import string
+# import random
+# import string
 
-def generate_password(length=12):
-    # Define the characters to use in the password
-    alfabet = string.ascii_letters + string.digits + string.punctuation
+# def generate_password(length=12):
+#     # Define the characters to use in the password
+#     alfabet = string.ascii_letters + string.digits + string.punctuation
 
-    # Use the random module to generate the password
-    password = r''.join(random.choice(alfabet) for i in range(length))
+#     # Use the random module to generate the password
+#     password = r''.join(random.choice(alfabet) for i in range(length))
 
-    return password
+#     return password
 
-password_length_str = input("Input the desire length of your password: ")
+# password_length_str = input("Input the desire length of your password: ")
 
-# Defaults to 12 characters password if there is no input
-if password_length_str:
-    password_length = int(password_length_str)
+# # Defaults to 12 characters password if there is no input
+# if password_length_str:
+#     password_length = int(password_length_str)
+# else:
+#     password_length = 12
+
+# password = generate_password(password_length)
+# print(f"Generated password is: {password}")
+
+
+############################################
+# Write a Python program to check if a password meets the following criteria:
+# At least 8 characters long and
+# Contains at least one uppercase letter, one lowercase letter, one digit, and 
+# one special character (!, @, #, $, %, or &)
+# If the password meets the criteria, print a message that says "Valid Password." 
+# If it doesn't meet the criteria, print a message that says 
+# "Password does not meet requirements."
+# Written on: January 28, 2025
+##############################################
+
+import re
+
+def valid_password(password):
+    if len(password) < 8:
+        return False
+    
+    if not re.search(r'[a-z]', password):
+        return False
+    
+    if not re.search(r'[A-Z]', password):
+        return False
+    
+    if not re.search(r'\d', password):
+        return False
+    
+    if not re.search(r'[!@#$%&]', password):
+        return False
+    
+    return True
+
+password = input('Input your passowrd: ')
+is_valid = valid_password(password)
+
+if is_valid:
+    print("Valid Password")
 else:
-    password_length = 12
-
-password = generate_password(password_length)
-print(f"Generated password is: {password}")
+    print("Password does not meet requirements.")
