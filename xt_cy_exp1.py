@@ -263,30 +263,75 @@ Written on: January 26, 2025"""
 # Written on: January 28, 2025
 ##############################################
 
-import re
+# import re
 
-def valid_password(password):
-    if len(password) < 8:
-        return False
+# def valid_password(password):
+#     if len(password) < 8:
+#         return False
     
-    if not re.search(r'[a-z]', password):
-        return False
+#     if not re.search(r'[a-z]', password):
+#         return False
     
-    if not re.search(r'[A-Z]', password):
-        return False
+#     if not re.search(r'[A-Z]', password):
+#         return False
     
-    if not re.search(r'\d', password):
-        return False
+#     if not re.search(r'\d', password):
+#         return False
     
-    if not re.search(r'[!@#$%&]', password):
-        return False
+#     if not re.search(r'[!@#$%&]', password):
+#         return False
     
-    return True
+#     return True
 
-password = input('Input your passowrd: ')
-is_valid = valid_password(password)
+# password = input('Input your passowrd: ')
+# is_valid = valid_password(password)
 
-if is_valid:
-    print("Valid Password")
-else:
-    print("Password does not meet requirements.")
+# if is_valid:
+#     print("Valid Password")
+# else:
+#     print("Password does not meet requirements.")
+
+
+###################################################
+# Write a Python function that takes a password as input and 
+# returns a list of common character substitutions that 
+# could be used to create a stronger password.
+# Written on: January 29, 2025
+################################################
+# Practice attempt
+
+def get_password_variants(password):
+    pass_variants = []
+    substitutions = {
+        'a': ['@', '4', 'A'],
+        'e': ['3', 'E'],
+        'i': ['1', '!', 'I'],
+        'o': ['0', '0'],
+        's': ['$', '5', 'S'],
+        't': ['7', 'T'],
+        'z': ['2', 'Z']
+    }
+
+    for i in range(len(password)):
+        if password[i] in substitutions:
+            for sub in substitutions[password[i]]:
+                pass_variant = password[:i] + sub + password[i+1:]
+                pass_variants.append(pass_variant)
+
+    pass_variants.append(password + '!')
+    pass_variants.append(password + '123')
+    pass_variants.append(password + '@')
+    pass_variants.append(password + '#')
+    pass_variants.append(password + '$')
+    pass_variants.append(password + '%')
+    pass_variants.append(password + '&')
+    pass_variants.append(password + '*')
+    pass_variants.append(password + '-')
+    pass_variants.append(password + '_')
+    pass_variants.append(password + '=')
+    pass_variants.append(password + '+')  
+    return pass_variants
+password = input("Input your password: ")
+result_variants = get_password_variants(password)
+print(result_variants)
+print("\nType 'clear' and press 'Enter' after you have written you password")
