@@ -300,38 +300,72 @@ Written on: January 26, 2025"""
 ################################################
 # Practice attempt
 
-def get_password_variants(password):
-    pass_variants = []
+# password = input("Input your password: ")
+
+# def get_password_variants(password):
+#     pass_variants = []
+#     substitutions = {
+#         'a': ['@', '4', 'A'],
+#         'e': ['3', 'E'],
+#         'i': ['1', '!', 'I'],
+#         'o': ['0', '0'],
+#         's': ['$', '5', 'S'],
+#         't': ['7', 'T'],
+#         'z': ['2', 'Z']
+#     }
+
+#     for i in range(len(password)):
+#         if password[i] in substitutions: # Checks whether the character at the current index i of the password exists as a key in the substitutions dictionary
+#             for sub in substitutions[password[i]]: # iterates over each element in the list of substitution
+#                 pass_variant = password[:i] + sub + password[i+1:] # concatenation
+#                 pass_variants.append(pass_variant) # adds generated password variant to the pass_variants list
+
+#     pass_variants.append(password + '!')
+#     pass_variants.append(password + '123')
+#     pass_variants.append(password + '@')
+#     pass_variants.append(password + '#')
+#     pass_variants.append(password + '$')
+#     pass_variants.append(password + '%')
+#     pass_variants.append(password + '&')
+#     pass_variants.append(password + '*')
+#     pass_variants.append(password + '-')
+#     pass_variants.append(password + '_')
+#     pass_variants.append(password + '=')
+#     pass_variants.append(password + '+')  
+#     return pass_variants # Returns the pass_variants list
+
+# result_variants = get_password_variants(password)
+# print(result_variants)
+
+#########
+### Attempt no.2: February 1, 2025
+#########
+
+password = input("Input your password: ")
+
+def alt_password(password):
+    # Creates an empty list to input pass_variant
+    variants = []
+    # A substitution dictionary list to substitute each character
     substitutions = {
         'a': ['@', '4', 'A'],
-        'e': ['3', 'E'],
-        'i': ['1', '!', 'I'],
-        'o': ['0', '0'],
-        's': ['$', '5', 'S'],
-        't': ['7', 'T'],
-        'z': ['2', 'Z']
+        's': ['3', 'E', '#'],
+        'd': ['I', '1', '|'],
+        'f': ['0', 'O', 'Q', '*'],
+        'j': ['U', '()', '##']
     }
 
     for i in range(len(password)):
         if password[i] in substitutions:
             for sub in substitutions[password[i]]:
                 pass_variant = password[:i] + sub + password[i+1:]
-                pass_variants.append(pass_variant)
+                variants.append(pass_variant)
+    
+    variants.append(password + 'l4l4l4')
+    variants.append(password + '@9876')
+    variants.append(password + '$A$P')
+    variants.append('--__--'+ password +'****')
+    return variants
 
-    pass_variants.append(password + '!')
-    pass_variants.append(password + '123')
-    pass_variants.append(password + '@')
-    pass_variants.append(password + '#')
-    pass_variants.append(password + '$')
-    pass_variants.append(password + '%')
-    pass_variants.append(password + '&')
-    pass_variants.append(password + '*')
-    pass_variants.append(password + '-')
-    pass_variants.append(password + '_')
-    pass_variants.append(password + '=')
-    pass_variants.append(password + '+')  
-    return pass_variants
-password = input("Input your password: ")
-result_variants = get_password_variants(password)
-print(result_variants)
-print("\nType 'clear' and press 'Enter' after you have written you password")
+is_variant = alt_password(password)
+print(is_variant)
