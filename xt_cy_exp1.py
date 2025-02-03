@@ -341,31 +341,69 @@ Written on: January 26, 2025"""
 ### Attempt no.2: February 1, 2025
 #########
 
-password = input("Input your password: ")
+# password = input("Input your password: ")
 
-def alt_password(password):
-    # Creates an empty list to input pass_variant
-    variants = []
-    # A substitution dictionary list to substitute each character
-    substitutions = {
-        'a': ['@', '4', 'A'],
-        's': ['3', 'E', '#'],
-        'd': ['I', '1', '|'],
-        'f': ['0', 'O', 'Q', '*'],
-        'j': ['U', '()', '##']
-    }
+# def alt_password(password):
+#     # Creates an empty list to input pass_variant
+#     variants = []
+#     # A substitution dictionary list to substitute each character
+#     substitutions = {
+#         'a': ['@', '4', 'A'],
+#         's': ['3', 'E', '#'],
+#         'd': ['I', '1', '|'],
+#         'f': ['0', 'O', 'Q', '*'],
+#         'j': ['U', '()', '##']
+#     }
 
-    for i in range(len(password)):
-        if password[i] in substitutions:
-            for sub in substitutions[password[i]]:
-                pass_variant = password[:i] + sub + password[i+1:]
-                variants.append(pass_variant)
+#     for i in range(len(password)):
+#         if password[i] in substitutions:
+#             for sub in substitutions[password[i]]:
+#                 pass_variant = password[:i] + sub + password[i+1:]
+#                 variants.append(pass_variant)
     
-    variants.append(password + 'l4l4l4')
-    variants.append(password + '@9876')
-    variants.append(password + '$A$P')
-    variants.append('--__--'+ password +'****')
-    return variants
+#     variants.append(password + 'l4l4l4')
+#     variants.append(password + '@9876')
+#     variants.append(password + '$A$P')
+#     variants.append('--__--'+ password +'****')
+#     return variants
 
-is_variant = alt_password(password)
-print(is_variant)
+# is_variant = alt_password(password)
+# print(is_variant)
+
+
+####################################
+# Write a Python function that reads a file containing a list of passwords, one per line.
+# It checks each password to see if it meets certain requirements(e.g. at least 8 characters,
+# contains both uppercase and lowercase letters, and at least one number and one special
+# character.) Passwords that satisfy the requirements should be printed by the program.
+# Written on: February 2, 2025
+##################################
+
+import re
+
+# Open the file in read mode
+file = open("passwords.txt", "r")
+# Read the first line
+content = file.readline()
+
+def meet_requirements(content):
+    while content:
+        if len(content) < 8:
+            return False
+        if not re.search(r'[A-Z]', content):
+            return False
+        if not re.search(r'[a-z]', content):
+            return False
+        if not re.search(r'\d', content):
+            return False
+        if not re.search(r'[!@#$%^&*()_-=+<>,./?[]{}]', content):
+            return False
+        content = file.readline()
+        return True
+
+if meet_requirements(content):
+    print(content)
+else:
+    print("None of the passwords meet the requirements.")
+# Close the file
+file.close()
