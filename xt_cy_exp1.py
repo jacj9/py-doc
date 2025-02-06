@@ -397,10 +397,20 @@ def pass_requirements(password):
     num_meet = num_re.search(password)
     spec_meet = spec_re.search(password)
 
-    if pass_requirements(password):
+    # If all of the requirements are met, return true, if not, returnFalse
+    if len_meet and cap_meet and low_meet and num_meet and spec_meet:
         return True
     else:
         return False
+
+with open('passwords.txt', 'r') as f:
+    lines = f.strip()
+    for i in lines:
+        if pass_requirements(password):
+            print("Valid password: "+ password)
+        else:
+            print("Invalid password: " + password);
+            
         
 
 
