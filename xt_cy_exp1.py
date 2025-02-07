@@ -404,8 +404,8 @@ def pass_requirements(password):
         return False
 
 with open('passwords.txt', 'r') as f:
-    lines = f.strip()
-    for i in lines:
+    for password in f:
+        password = password.strip()
         if pass_requirements(password):
             print("Valid password: "+ password)
         else:
