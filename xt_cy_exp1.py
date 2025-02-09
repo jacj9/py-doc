@@ -416,33 +416,69 @@ Written on: January 26, 2025"""
 # Written on: February 6, 2025
 ####################
 
-import re
+# import re
 
-def pass_requirements(password):
-    # Define regular expression for each requirement
-    len_re = re.compile(r'^.{8,}$')
-    cap_re = re.compile(r'[A-Z]')
-    low_re = re.compile(r'[a-z]')
-    num_re = re.compile(r'\d')
-    spec_re = re.compile(r'[\W_]')
+# def pass_requirements(password):
+#     # Define regular expression for each requirement
+#     len_re = re.compile(r'^.{8,}$')
+#     cap_re = re.compile(r'[A-Z]')
+#     low_re = re.compile(r'[a-z]')
+#     num_re = re.compile(r'\d')
+#     spec_re = re.compile(r'[\W_]')
 
-    # Ensure passwords meet the requirements
-    len_meet = len_re.search(password)
-    cap_meet = cap_re.search(password)
-    low_meet = low_re.search(password)
-    num_meet = num_re.search(password)
-    spec_meet = spec_re.search(password)
+#     # Ensure passwords meet the requirements
+#     len_meet = len_re.search(password)
+#     cap_meet = cap_re.search(password)
+#     low_meet = low_re.search(password)
+#     num_meet = num_re.search(password)
+#     spec_meet = spec_re.search(password)
 
-    # If all of the requirements are met, return true, if not, returnFalse
-    if len_meet and cap_meet and low_meet and num_meet and spec_meet:
-        return True
-    else:
-        return False
+#     # If all of the requirements are met, return true, if not, returnFalse
+#     if len_meet and cap_meet and low_meet and num_meet and spec_meet:
+#         return True
+#     else:
+#         return False
 
-with open('passwords.txt') as f:
-    for password in f:
-        password = password.strip()
-        if pass_requirements(password):
-            print("Valid password: "+ password)
+# with open('passwords.txt') as f:
+#     for password in f:
+#         password = password.strip()
+#         if pass_requirements(password):
+#             print("Valid password: "+ password)
+#         else:
+#             print("Invalid password: " + password)
+
+
+####################################################
+# Write a Python program that reads a file containing 
+# a list of usernames and passwords, one pair per line (separatized by a comma). 
+# It checks each password to see if it has been leaked in a data breach. You can 
+# use the "Have I Been Pwned" API (https://haveibeenpwned.com/API/v3) to check if a 
+# password has been leaked.
+######################################################
+import requests
+import hashlib
+
+# Read the file containing usernames and passwords
+with open('passwords.txt', 'r') as f:
+    for line in f:
+        # Split the line into username and passord
+        username, password = line.strip().split(',')
+
+        # Hash the password using SHA-1 algorith
+        password_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+
+        # Make a request to "Have I Been Pwned" API to check if the password has been leaked
+        response = requests.get(f'https://api.pwnedpasswords.com/range/{password_hash[:5]}')
+
+        # If the response status code is 200, it means the password has been leaked
+        if response.status_code == 200:
+            # Get the list of hashes of leaked passwords that start with the same 5 character as the input password
+            hashes = [line.split(':') for line in response.text.splitlines()]
+
+            # Check if the hash of the input password matches any of the leaked password hashes
+            for h, count in hashes:
+                if password_hash[5:] == h:
+                    print(f"Password for user {username} has been leaked {count} times.")
+                    break
         else:
-            print("Invalid password: " + password)
+            print(f"Could not check password for user {username}.")
