@@ -494,6 +494,10 @@ import hashlib
 
 with open('passwords.txt', 'r') as f:
     for line in f:
-        text = f.split().seperate(',')
+        username, password = line.strip().split(',')
 
-        hash_password = hashlib.sha256(f).hexdigest()
+        password_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+
+        response = requests.get(f'https://api.pwnedpasswords.com/range/{password_hash[:5]}')
+
+        if response.status == 200:
