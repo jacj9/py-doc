@@ -485,7 +485,7 @@ Written on: January 26, 2025"""
 
 
 ##########################################
-# Practice the above exercise on my own
+# Practicing the above exercise on my own
 # Written on: February 9, 2025
 #########################################
 
@@ -500,4 +500,12 @@ with open('passwords.txt', 'r') as f:
 
         response = requests.get(f'https://api.pwnedpasswords.com/range/{password_hash[:5]}')
 
-        if response.status == 200:
+        if response.status_code == 200:
+            hashes = [line.split(':') for line in response.text.splitlines()]
+
+            for h, count in hashes:
+                if password_hash[5:] == h:
+                    print(f"Password for user {username} has been leaked {count} times.")
+                    break
+        else:
+            print(f"Could not check password for user {username}")
