@@ -489,23 +489,57 @@ Written on: January 26, 2025"""
 # Written on: February 9, 2025
 #########################################
 
-import requests
-import hashlib
+# import requests
+# import hashlib
 
-with open('passwords.txt', 'r') as f:
-    for line in f:
-        username, password = line.strip().split(',')
+# with open('passwords.txt', 'r') as f:
+#     for line in f:
+#         username, password = line.strip().split(',')
 
-        password_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
+#         password_hash = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
 
-        response = requests.get(f'https://api.pwnedpasswords.com/range/{password_hash[:5]}')
+#         response = requests.get(f'https://api.pwnedpasswords.com/range/{password_hash[:5]}')
 
-        if response.status_code == 200:
-            hashes = [line.split(':') for line in response.text.splitlines()]
+#         if response.status_code == 200:
+#             hashes = [line.split(':') for line in response.text.splitlines()]
 
-            for h, count in hashes:
-                if password_hash[5:] == h:
-                    print(f"Password for user {username} has been leaked {count} times.")
-                    break
-        else:
-            print(f"Could not check password for user {username}")
+#             for h, count in hashes:
+#                 if password_hash[5:] == h:
+#                     print(f"Password for user {username} has been leaked {count} times.")
+#                     break
+#         else:
+#             print(f"Could not check password for user {username}")
+
+
+############################################################
+# Write a function check_password_strength(password) that takes 
+# a password as input and returns a string indicating the strength 
+# of the password based on the following criteria:
+# "Weak": Less than 6 characters or only contains lowercase letters or only contains digits.
+# "Average": At least 6 characters and contains a mix of uppercase and lowercase letters.
+# "Strong": At least 8 characters and contains a mix of uppercase and lowercase letters, 
+# digits, and special characters.
+# Written on: February 13, 2025
+#################################################################
+
+def check_password_strength(password):
+    password_length = len(password)
+
+    if password_length < 6:
+        return "Weak"
+    elif password_length < 8:
+            if password.isupper() or password.islower():
+                return "Average"
+            elif password.isalnum():
+                        return "Average"
+    elif password_length >= 8:
+            if password.isalnum() and any(char in password for char in '!@#$%^&*()_+='):
+                return "Strong"
+            else:
+                return "Average"
+password1 = "abc"
+password2 = "MyPassword"
+password3 = "MyP@ssw0rd!"
+print(check_password_strength(password1))  # Output: Weak
+print(check_password_strength(password2))  # Output: Average
+print(check_password_strength(password3))  # Output: Strong
