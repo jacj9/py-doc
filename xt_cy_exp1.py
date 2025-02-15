@@ -522,24 +522,27 @@ Written on: January 26, 2025"""
 # Written on: February 13, 2025
 #################################################################
 
+# Answer key
+import string
+
 def check_password_strength(password):
     password_length = len(password)
 
     if password_length < 6:
         return "Weak"
-    elif password_length < 8:
-            if password.isupper() or password.islower():
-                return "Average"
-            elif password.isalnum():
-                        return "Average"
+    elif password_length >= 6:
+        if any(char.islower() for char in password) and any(char.isupper() for char in password) and any(char.isdigit() for char in password) and any(char in '!@#$%^&*()_+' for char in password):
+            return "Strong"
+        else:
+            return "Average"
     elif password_length >= 8:
-            if password.isalnum() and any(char in password for char in '!@#$%^&*()_+='):
-                return "Strong"
-            else:
-                return "Average"
-password1 = "abc"
-password2 = "MyPassword"
+        if any(char.isalpha() for char in password) and any(char.isdigit() for char in password):
+            return "Average"
+
+password1 = "p123"
+password2 = "MyPass123"
 password3 = "MyP@ssw0rd!"
-print(check_password_strength(password1))  # Output: Weak
-print(check_password_strength(password2))  # Output: Average
-print(check_password_strength(password3))  # Output: Strong
+
+print(check_password_strength(password1))
+print(check_password_strength(password2))
+print(check_password_strength(password3))
