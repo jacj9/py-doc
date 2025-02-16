@@ -461,7 +461,7 @@ Written on: January 26, 2025"""
 # # Read the file containing usernames and passwords
 # with open('passwords.txt', 'r') as f:
 #     for line in f:
-#         # Split the line into username and passord
+#         # Split the line into username and password
 #         username, password = line.strip().split(',')
 
 #         # Hash the password using SHA-1 algorith
@@ -488,6 +488,7 @@ Written on: January 26, 2025"""
 # Practicing the above exercise on my own
 # Written on: February 9, 2025
 #########################################
+
 
 # import requests
 # import hashlib
@@ -522,27 +523,51 @@ Written on: January 26, 2025"""
 # Written on: February 13, 2025
 #################################################################
 
-# Answer key
-import string
+## AI Answer key
 
-def check_password_strength(password):
-    password_length = len(password)
+# def check_password_strength(password):
+#     password_length = len(password)
 
-    if password_length < 6:
-        return "Weak"
-    elif password_length >= 6:
-        if any(char.islower() for char in password) and any(char.isupper() for char in password) and any(char.isdigit() for char in password) and any(char in '!@#$%^&*()_+' for char in password):
-            return "Strong"
-        else:
-            return "Average"
-    elif password_length >= 8:
-        if any(char.isalpha() for char in password) and any(char.isdigit() for char in password):
-            return "Average"
+#     if password_length < 6:
+#         return "Weak"
+#     elif password_length >= 6:
+#         if any(char.islower() for char in password) and any(char.isupper() for char in password) and any(char.isdigit() for char in password) and any(char in '!@#$%^&*()_+' for char in password):
+#             return "Strong"
+#         else:
+#             return "Average"
+#     elif password_length >= 8:
+#         if any(char.isalpha() for char in password) and any(char.isdigit() for char in password):
+#             return "Average"
 
-password1 = "p123"
-password2 = "MyPass123"
-password3 = "MyP@ssw0rd!"
+# password1 = "p123"
+# password2 = "MyPass123"
+# password3 = "MyP@ssw0rd!"
 
-print(check_password_strength(password1))
-print(check_password_strength(password2))
-print(check_password_strength(password3))
+# print(check_password_strength(password1))
+# print(check_password_strength(password2))
+# print(check_password_strength(password3))
+
+
+#################################################
+# Practice the above exercise
+# Written on: February 15, 2025
+#################################################
+
+# def check_password_strength(password):
+#     password_length = len(password)
+
+#     if password_length < 8:
+#         return "Weak"
+#     if password_length >=8:
+#         if any(char.isupper() for char in password) and any(char.islower() for char in password) and any(char.isalpha() for char in password) and any(char in '!@#$%^&*()_+' for char in password) and any(char.isdigit() for char in password):
+#             return "Strong"
+#         else:
+#             return "Average"
+    
+# password1 = "p123"
+# password2 = "MyPass123&"
+# password3 = "MyP@ssw0rd!"
+
+# print(check_password_strength(password1))
+# print(check_password_strength(password2))
+# print(check_password_strength(password3))
