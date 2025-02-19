@@ -513,7 +513,7 @@ Written on: January 26, 2025"""
 
 
 ############################################################
-# Write a function check_password_strength(password) that takes 
+# 6. Write a function check_password_strength(password) that takes 
 # a password as input and returns a string indicating the strength 
 # of the password based on the following criteria:
 # "Weak": Less than 6 characters or only contains lowercase letters or only contains digits.
@@ -573,6 +573,37 @@ Written on: January 26, 2025"""
 # print(check_password_strength(password3))
 
 
+#######################################################
+# Practice exercise 6 above
+# Written on: February 18, 2025
+#######################################################
+import re
+
+def check_password_strength(password):
+
+    if len(password) < 8:
+        return 'Weak'
+    if len(password) >=8:
+        if re.search(r'\d', password) and re.search(r'[a-z]', password) and re.search(r'[A-Z]', password) and re.search(r'[!@#$%^&*()_+=-]', password):
+            return 'Strong'
+        # if re.search(r'[a-z]', password):
+        #     return True
+        # if re.search(r'[A-Z]', password):
+        #     return True
+        # if re.search(r'[!@#$%^&*()_+=-]', password):
+        #     return True
+        else:
+            return 'Average'
+
+password = 'abcd'
+password2 = 'Ab34%^J(jl)'
+password3 = 'ABNCCDKL90'
+
+print(check_password_strength(password))
+print(check_password_strength(password2))
+print(check_password_strength(password3))
+
+
 ###########################################################
 # 7. Write a Python program that creates a password strength meter. The program should prompt 
 # the user to enter a password and check its strength based on criteria such as length, complexity, 
@@ -591,52 +622,53 @@ Written on: January 26, 2025"""
 ## Practice Exercise
 ## Written on: February 17, 2025
 ###################################
-import re
-def check_password_strength(password):
-    score = 0
-    suggestions = []
-    password_length = len(password)
-      
-    # check for password length
-    if password_length >= 8:
-        score += 1
-    else:
-        suggestions.append("Password should be at least 8 characters long")
-
-    # check for uppercase letter
-    if re.search(r'[A-Z]', password):
-        score += 1
-    else:
-        suggestions.append("Password should contain at lease one uppercase letter")
-
-    #check for lowercase letter
-    if re.search(r'[a-z]', password):
-               score += 1
-    else:
-        suggestions.append("Password should contain at least one lowercase letter")
-
-    # check for numeric digit
-    if re.search(r'\d', password):
-        score += 1
-    else:
-        suggestions.append("Password should contain a numeric digit")
-
-    # check for special characters
-    if re.search(r'[!@#$%^&*()_+]', password):
-        score += 1
-    else:
-        suggestions.append("Password should contain at lease one  special character")
+# import re
+# def check_password_strength(password):
+#     score = 0
+#     suggestions = []
     
-    if score == 5:
-         suggestions.append("Strong password")
-    return score, suggestions
+#     password_length = len(password)
+      
+#     # check for password length
+#     if password_length >= 8:
+#         score += 1
+#     else:
+#         suggestions.append("Password should be at least 8 characters long")
 
-password = 'password1234'
-password2 = 'Pass123#$$%'
-password3 = '#n23K'
-print(check_password_strength(password))
-print(check_password_strength(password2))
-print(check_password_strength(password3))
+#     # check for uppercase letter
+#     if re.search(r'[A-Z]', password):
+#         score += 1
+#     else:
+#         suggestions.append("Password should contain at lease one uppercase letter")
+
+#     #check for lowercase letter
+#     if re.search(r'[a-z]', password):
+#                score += 1
+#     else:
+#         suggestions.append("Password should contain at least one lowercase letter")
+
+#     # check for numeric digit
+#     if re.search(r'\d', password):
+#         score += 1
+#     else:
+#         suggestions.append("Password should contain a numeric digit")
+
+#     # check for special characters
+#     if re.search(r'[!@#$%^&*()_+]', password):
+#         score += 1
+#     else:
+#         suggestions.append("Password should contain at lease one  special character")
+    
+#     if score == 5:
+#          suggestions.append("Strong password")
+#     return score, suggestions
+
+# password = 'password1234'
+# password2 = 'Pass123#$$%'
+# password3 = '#n23K'
+# print(check_password_strength(password))
+# print(check_password_strength(password2))
+# print(check_password_strength(password3))
 
 
 ## Sample Solution
