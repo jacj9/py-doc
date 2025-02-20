@@ -105,31 +105,34 @@
 Create a simple password strength checker
 Written on January 25, 2025
 """
-# import re
+import re
 
-# def password_strength(password):
-#     if len(password) < 8:
-#         return False
+def password_strength(password):
+    if len(password) < 8:
+        return False
     
-#     if not re.search('[a-z]', password):
-#         return False
+    if not re.search('[a-z]', password):
+        return False
     
-#     if not re.search('[A-Z]', password):
-#         return False
+    if not re.search('[A-Z]', password):
+        return False
     
-#     if not re.search('\d', password):
-#         return False
+    if not re.search('\d', password):
+        return False
     
-#     if not re.search('[!@#$%^&*()_+=<>?/{}]', password):
-#         return False
+    if not re.search('\W', password):
+        return False
     
-#     return True
+    if not re.search('[!@#$%^&*()_+=<>?/{}]', password):
+        return False
+    
+    return True
 
-# print(password_strength("hakewm"))
-# print(password_strength("hA2#k9090s"))
-# print(password_strength("h kwnsoJL"))
-# print(password_strength("0 234PassW0rd"))
-# print(password_strength("weakpas"))
+print(password_strength("hakewm"))
+print(password_strength("hA2#k9090s"))
+print(password_strength("h kwnsoJL"))
+print(password_strength("0 234PassW0rd{"))
+print(password_strength("weakpas"))
 
 
 """Write a Python program that defines a function and takes 
@@ -577,31 +580,25 @@ Written on: January 26, 2025"""
 # Practice exercise 6 above
 # Written on: February 18, 2025
 #######################################################
-import re
+# import re
 
-def check_password_strength(password):
+# def check_password_strength(password):
 
-    if len(password) < 8:
-        return 'Weak'
-    if len(password) >=8:
-        if re.search(r'\d', password) and re.search(r'[a-z]', password) and re.search(r'[A-Z]', password) and re.search(r'[!@#$%^&*()_+=-]', password):
-            return 'Strong'
-        # if re.search(r'[a-z]', password):
-        #     return True
-        # if re.search(r'[A-Z]', password):
-        #     return True
-        # if re.search(r'[!@#$%^&*()_+=-]', password):
-        #     return True
-        else:
-            return 'Average'
+#     if len(password) < 8:
+#         return 'Weak'
+#     if len(password) >=8:
+#         if re.search(r'\d', password) and re.search(r'[a-z]', password) and re.search(r'[A-Z]', password) and re.search(r'[!@#$%^&*()_+=-]', password):
+#             return 'Strong'
+#         else:
+#             return 'Average'
 
-password = 'abcd'
-password2 = 'Ab34%^J(jl)'
-password3 = 'ABNCCDKL90'
+# password = 'abcd'
+# password2 = 'Ab34%^J(jl)'
+# password3 = 'ABNCCDKL90'
 
-print(check_password_strength(password))
-print(check_password_strength(password2))
-print(check_password_strength(password3))
+# print(check_password_strength(password))
+# print(check_password_strength(password2))
+# print(check_password_strength(password3))
 
 
 ###########################################################
