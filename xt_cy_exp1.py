@@ -105,34 +105,34 @@
 Create a simple password strength checker
 Written on January 25, 2025
 """
-import re
+# import re
 
-def password_strength(password):
-    if len(password) < 8:
-        return False
+# def password_strength(password):
+#     if len(password) < 8:
+#         return False
     
-    if not re.search('[a-z]', password):
-        return False
+#     if not re.search('[a-z]', password):
+#         return False
     
-    if not re.search('[A-Z]', password):
-        return False
+#     if not re.search('[A-Z]', password):
+#         return False
     
-    if not re.search('\d', password):
-        return False
+#     if not re.search('\d', password):
+#         return False
     
-    if not re.search('\W', password):
-        return False
+#     if not re.search('\W', password):
+#         return False
     
-    if not re.search('[!@#$%^&*()_+=<>?/{}]', password):
-        return False
+#     if not re.search('[!@#$%^&*()_+=<>?/{}]', password):
+#         return False
     
-    return True
+#     return True
 
-print(password_strength("hakewm"))
-print(password_strength("hA2#k9090s"))
-print(password_strength("h kwnsoJL"))
-print(password_strength("0 234PassW0rd{"))
-print(password_strength("weakpas"))
+# print(password_strength("hakewm"))
+# print(password_strength("hA2#k9090s"))
+# print(password_strength("h kwnsoJL"))
+# print(password_strength("0 234PassW0rd{"))
+# print(password_strength("weakpas"))
 
 
 """Write a Python program that defines a function and takes 
@@ -709,3 +709,25 @@ Written on: January 26, 2025"""
 #     return score, suggestions
 # password = input("Input a password: ")
 # print(check_password_strength(password))
+
+
+######################################################
+# 8. Write a Python program that generates a password 
+# using a random combination of words from a dictionary file.
+# Written on: February 21, 2025
+########################################################
+
+# Open the dictionary file and read its content. You can use open() and read()
+with open('passwords2.txt', 'r') as f:
+    for line in f:
+        print(line.strip())
+# Split the content into individual words. You can use the split() method.
+
+
+# Randomly select a certain number of words from the list. import random
+
+
+# Concatenate the selected words together to generate the password. join()
+
+
+# print or return the generated password
