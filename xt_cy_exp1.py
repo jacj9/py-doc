@@ -716,18 +716,28 @@ Written on: January 26, 2025"""
 # using a random combination of words from a dictionary file.
 # Written on: February 21, 2025
 ########################################################
+import random
 
 # Open the dictionary file and read its content. You can use open() and read()
 with open('passwords2.txt', 'r') as f:
     for line in f:
-        print(line.strip())
-# Split the content into individual words. You can use the split() method.
-
+        # Split the content into individual words. You can use the split() method.
+        my_list = line.strip() + "-"
+        random_words = random.sample(my_list, 3)
+        concat = my_list + random_words
+        # print(random_words)
+        # print(my_list, random_words)
+        # for r in my_list:
+        #     print(r)
+        result = "-".join(random_words)
+        print(result)
+        
 
 # Randomly select a certain number of words from the list. import random
-
+        # random_words = random.sample(my_list, 5)
+        # print(random_words)
 
 # Concatenate the selected words together to generate the password. join()
-
+# result = "-".join(mylist, random_words)
 
 # print or return the generated password
