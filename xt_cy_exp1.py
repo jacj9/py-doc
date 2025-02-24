@@ -741,3 +741,19 @@ with open('passwords2.txt', 'r') as f:
 # result = "-".join(mylist, random_words)
 
 # print or return the generated password
+
+import random
+
+def generate_password():
+    with open('passwords2.txt') as f:
+        words = f.read().splitline()
+
+    password = random.sample(words, 4)
+
+    password = "-".join(password)
+
+    return password
+
+print(generate_password())
+
+    
