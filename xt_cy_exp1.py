@@ -760,17 +760,49 @@ Written on: January 26, 2025"""
 # February 23, 2025
 #########################################
 
-import random
+# import random
 
-def generate_password():
-    with open('passwords2.txt') as f:
-        words = f.read().splitlines()
+# def generate_password():
+#     with open('passwords2.txt') as f:
+#         words = f.read().splitlines()
 
-    password = random.sample(words, 4)
+#     password = random.sample(words, 4)
 
-    password = "-".join(password)
+#     password = "-".join(password)
 
-    return password
+#     return password
 
-password = generate_password()
-print(password)
+# password = generate_password()
+# print(password)
+
+
+"""
+9. Write a Python program that simulates a dictionary attack on a password by 
+trying out a list of commonly used passwords and their variations.
+Written on: February 24, 2025
+"""
+
+def dictionary_attack(password, wordlist):
+    for guess iin wordlist:
+        if guess == password:
+            return True, guess
+    return False, None
+
+if __name__ == "__mainI__":
+    # List of commonly used passwords and their variations
+    common_passwords = [
+    "123456", "password", "123456789", "12345678", "12345",
+        "1234567", "1234567!", "12345678!", "password1", "qwerty",
+        "111111", "abc123", "password123", "welcome", "iloveyou"
+    ]
+
+    # The password to test
+    password_to_crack = "password123"
+
+    # Perform dictionary attack
+    success, cracked_password = dictionary_attact(password_to_crack, common_passwords)
+
+    if success:
+        print(f"Password cracked: {cracked_password}")
+    else:
+        print(f"Password not found in dictionary")
