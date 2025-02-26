@@ -766,7 +766,7 @@ Written on: January 26, 2025"""
 #     with open('passwords2.txt') as f:
 #         words = f.read().splitlines()
 
-#     password = random.sample(words, 4)
+#     password = random.sample(words, 6)
 
 #     password = "-".join(password)
 
@@ -782,27 +782,12 @@ trying out a list of commonly used passwords and their variations.
 Written on: February 24, 2025
 """
 
-def dictionary_attack(password, wordlist):
-    for guess iin wordlist:
-        if guess == password:
-            return True, guess
-    return False, None
+common_passwords = ['123456', 'qwerty', 'iloveyou', '12345678', 'asdfghj', 'password123', 'hello', 'abc123', 'password1', '11111111']
+variations = ['!', '@', '#', '$', '%', '^', '&', '*', '()', '-', '_', '=', '+']
 
-if __name__ == "__mainI__":
-    # List of commonly used passwords and their variations
-    common_passwords = [
-    "123456", "password", "123456789", "12345678", "12345",
-        "1234567", "1234567!", "12345678!", "password1", "qwerty",
-        "111111", "abc123", "password123", "welcome", "iloveyou"
-    ]
+# def dictionary_attack(common_passwords):
+        # for i in common_passwords:
+            # if guess == common_passwords:
 
-    # The password to test
-    password_to_crack = "password123"
-
-    # Perform dictionary attack
-    success, cracked_password = dictionary_attact(password_to_crack, common_passwords)
-
-    if success:
-        print(f"Password cracked: {cracked_password}")
-    else:
-        print(f"Password not found in dictionary")
+# password == common_passwords, use variations table
+# password != common_passwords, don't need variations table
