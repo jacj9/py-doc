@@ -782,12 +782,10 @@ trying out a list of commonly used passwords and their variations.
 Written on: February 24, 2025
 """
 
-common_passwords = ['123456', 'qwerty', 'iloveyou', '12345678', 'asdfghj', 'password123', 'hello', 'abc123', 'password1', '11111111']
-variations = ['!', '@', '#', '$', '%', '^', '&', '*', '()', '-', '_', '=', '+']
+import hashlib
+# List of commonly used passwords and their variations
+common_passwords = ["password", "password123", "letmein", "qwerty", "123456", "abc123", "admin", "welcome", "monkey", "sunshine"]
+password_variations = ["", "123", "1234", "12345", "123456", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "/", "\\", "|", "[", "]", "{", "}", "<", ">"]
+# Hash of the password to be attacked
 
-# def dictionary_attack(common_passwords):
-        # for i in common_passwords:
-            # if guess == common_passwords:
-
-# password == common_passwords, use variations table
-# password != common_passwords, don't need variations table
+# Try out all possible combinations of common passwords and their variations
