@@ -787,5 +787,15 @@ import hashlib
 common_passwords = ["password", "password123", "letmein", "qwerty", "123456", "abc123", "admin", "welcome", "monkey", "sunshine"]
 password_variations = ["", "123", "1234", "12345", "123456", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "/", "\\", "|", "[", "]", "{", "}", "<", ">"]
 # Hash of the password to be attacked
-
+hash_password = hashlib.sha256(b"password123").hexdigest()
 # Try out all possible combinations of common passwords and their variations
+for password in common_passwords:
+    for variation in password_variations:
+        combinations = password + variation
+        hash_combinations_password = hashlib.sha256(combinations.encode()).hexdigest()
+        if hash_combinations_password == hash_password:
+            print(f'Password {combinations} has been found')
+            break
+        else:
+            print(f'Password not found')
+            break
