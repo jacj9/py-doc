@@ -791,11 +791,13 @@ hash_password = hashlib.sha256(b"password123").hexdigest()
 # Try out all possible combinations of common passwords and their variations
 for password in common_passwords:
     for variation in password_variations:
-        combinations = password + variation
-        hash_combinations_password = hashlib.sha256(combinations.encode()).hexdigest()
+        possible_password = password + variation
+        hash_combinations_password = hashlib.sha256(possible_password.encode()).hexdigest()
         if hash_combinations_password == hash_password:
-            print(f'Password {combinations} has been found')
+            print(f'Password {possible_password} has been found')
             break
-        else:
-            print(f'Password not found')
-            break
+    else:
+         continue
+    break
+else:
+    print("Password not found")
