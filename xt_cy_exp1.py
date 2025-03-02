@@ -782,22 +782,27 @@ trying out a list of commonly used passwords and their variations.
 Written on: February 24, 2025
 """
 
-import hashlib
-# List of commonly used passwords and their variations
-common_passwords = ["password", "password123", "letmein", "qwerty", "123456", "abc123", "admin", "welcome", "monkey", "sunshine"]
-password_variations = ["", "123", "1234", "12345", "123456", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "/", "\\", "|", "[", "]", "{", "}", "<", ">"]
-# Hash of the password to be attacked
-hash_password = hashlib.sha256(b"password123").hexdigest()
-# Try out all possible combinations of common passwords and their variations
-for password in common_passwords:
-    for variation in password_variations:
-        possible_password = password + variation
-        hash_combinations_password = hashlib.sha256(possible_password.encode()).hexdigest()
-        if hash_combinations_password == hash_password:
-            print(f'Password {possible_password} has been found')
-            break
-    else:
-         continue
-    break
-else:
-    print("Password not found")
+# import hashlib
+# # List of commonly used passwords and their variations
+# common_passwords = ["password", "password123", "letmein", "qwerty", "123456", "abc123", "admin", "welcome", "monkey", "sunshine"]
+# password_variations = ["", "123", "1234", "12345", "123456", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "/", "\\", "|", "[", "]", "{", "}", "<", ">"]
+# # Hash of the password to be attacked
+# hash_password = hashlib.sha256(b"pplush123").hexdigest()
+# # Try out all possible combinations of common passwords and their variations
+# for password in common_passwords:
+#     for variation in password_variations:
+#         possible_password = password + variation
+#         hash_combinations_password = hashlib.sha256(possible_password.encode()).hexdigest()
+#         if hash_combinations_password == hash_password:
+#             print(f'Password {possible_password} has been cracked')
+#             break
+#     else:
+#          continue
+#     break
+# else:
+#     print("Password not found")
+
+
+"""10. Write a Python program that simulates a brute-force attack on a password by trying out all possible character combinations.
+Written on: March 1, 2025
+"""
