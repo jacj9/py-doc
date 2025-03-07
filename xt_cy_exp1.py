@@ -819,9 +819,11 @@ def brute_force():
 # Initialize the variable for counting the number of attempts
     attempts = 0
 # Iterate through different password lengths
-### --------- More clarification from here
-    for length in range(1, len(password) +1): 
+# For loop starting from 1 and goes up to, but does not include, the len(password) +1 value
+    for length in range(1, len(password) + 1):
 # Iterate through all possible combinations of characters for the given length
+# itertools.product returns an iterator that yields tuples with all possible combinations
+# of the input iterables
         for guess in itertools.product(chars, repeat=length):
 # Increase the number of attempts by 1
             attempts += 1
