@@ -813,23 +813,50 @@ import itertools
 import string
 
 # Define the function for the brute-force attack
-def brute_force():
+def brute_force(password):
+
 # Define the set of characters to be used for guessing
     chars = string.printable.strip()
+
 # Initialize the variable for counting the number of attempts
     attempts = 0
+
 # Iterate through different password lengths
 # For loop starting from 1 and goes up to, but does not include, the len(password) +1 value
     for length in range(1, len(password) + 1):
+
 # Iterate through all possible combinations of characters for the given length
 # itertools.product returns an iterator that yields tuples with all possible combinations
 # of the input iterables
+# chars is a variable that represents a sequence(like a string, list, or any iterable) of characters
+# repeat=length, The repeat argument specifies how many times the input iterable(chars in this case)
+# should be repeated in the product
+# If length is 3, itertools.product(chars, repeat=3) generates all possible combinations of chars of length 3
         for guess in itertools.product(chars, repeat=length):
+
 # Increase the number of attempts by 1
             attempts += 1
+
 # Convert the generated combination into a string
+            string_combination = ''.join(guess)
+
 # Check if the generated combination matches the actual password
+            if string_combination == password:
+                return (attempts, string_combination)
+
 # Return the total attempts and None if the password was not cracked
+    return (attempts, None)
+
 # Get the password from user input
+password = input("Input password to crack: ")
+
+
 # Execute the brute-force attack function and capture the attempts and guessed password
+attempts, string_combination = brute_force(password)
+
 # Print the results
+if string_combination:
+     print(f'Password found in {attempts}. The password is {string_combination}')
+else:
+    print(f'Password has not been found after {attempts} attemps.')
+
