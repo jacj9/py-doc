@@ -868,22 +868,28 @@ March 9, 2025
 
 import string
 import itertools
+import time
 
-def bruteforce_attack(password):
+def bruteforce_attack(password, time_limit):
     chars = string.printable.strip()
     attempts = 0
+    start_time = time.time() # Record the start time
+    
     for length in range(1, len(password) + 1):
         for guess in itertools.product(chars, repeat=length):
+            if time.time() - start_time > time_limit:
+                print("Time exceeded!")
+                return attempts, None
             attempts +=1
             string_combination = ''.join(guess)
-        if string_combination == password:
-            return attempts, string_combination
+            if string_combination == password:
+                return attempts, string_combination
     return attempts, None
 
 password = 'hao123'
-print(f'{password}')
+time_limit = 5
 
-attempts, string_combination = bruteforce_attack(password)
+attempts, string_combination = bruteforce_attack(password, time_limit)
 
 if string_combination:
     print(f'The {password} has been cracked after {attempts} attempts.')
